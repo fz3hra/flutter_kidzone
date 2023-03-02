@@ -19,39 +19,55 @@ class OnboardingScreen extends StatelessWidget {
               color: Color(int.parse(items.backgroundColor)),
             ),
             width: double.infinity,
-            padding: const EdgeInsets.symmetric(vertical: 72),
-            child: Column(
+            padding: const EdgeInsets.only(
+              top: 72,
+            ),
+            child: Stack(
+              clipBehavior: Clip.none,
               children: [
-                // !logo
-                Image.asset(
-                  "assets/images/logo.png",
-                ),
-                const Gap(32),
-                // !child image (dynamicx)
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 274,
-                  child: Image.asset(
-                    items.imagePath,
-                    fit: BoxFit.fill,
+                Positioned.fill(
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Image.asset(
+                      "assets/images/onboarding/head.png",
+                      fit: BoxFit.cover,
+                      width: 200,
+                    ),
                   ),
                 ),
-                const Gap(52),
-                // !text (dynamic)
-                Text(
-                  items.name,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
-                  ),
-                  textAlign: TextAlign.center,
+                Column(
+                  children: [
+                    // !logo
+                    Image.asset(
+                      "assets/images/logo.png",
+                    ),
+                    const Gap(32),
+                    // !child image (dynamicx)
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Image.asset(
+                        items.imagePath,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    const Gap(52),
+                    // !text (dynamic)
+                    Text(
+                      items.name,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const Gap(78),
+                    // !button
+                    const OnboardingButtonWidget(),
+                    // !button navigator
+                    // Image.asset("assets/images/onboarding/head.png")
+                  ],
                 ),
-                const Gap(78),
-                // !button
-                const OnboardingButtonWidget(),
-                // !button navigator
-                // Image.asset("assets/images/onboarding/head.png")
               ],
             ),
           );
