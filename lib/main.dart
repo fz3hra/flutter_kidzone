@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'screens/onboarding_screen/onboarding_screen.dart';
+import 'package:flutter_kidzone/config/routes.dart';
+import 'package:flutter_kidzone/screens/home_screen/home_screen.dart';
+import 'package:flutter_kidzone/screens/onboarding_screen/onboarding_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,8 +9,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,7 +17,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const OnboardingScreen(),
+      initialRoute: Routes.onboardingScreen,
+      routes: {
+        Routes.onboardingScreen: (context) => const OnboardingScreen(),
+        Routes.homeScreen: (context) => const HomeScreen(),
+      },
     );
   }
 }
